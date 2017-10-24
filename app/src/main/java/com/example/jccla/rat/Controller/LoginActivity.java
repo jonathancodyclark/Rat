@@ -7,18 +7,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
 
 import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
-        Model model;
+    //DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        model = Model.getInstance();
+        //db = new DatabaseHelper(this);
         EditText etLogin_username = (EditText) findViewById(R.id.etLogin_username);
         EditText etLogin_password = (EditText) findViewById(R.id.etLogin_password);
         Button bLogin = (Button) findViewById(R.id.bLogin_login);

@@ -1,8 +1,11 @@
 package com.example.jccla.rat.Model;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import com.example.jccla.rat.Model.DatabaseHelper;
 
 /**
  * Created by jccla on 10/17/2017.
