@@ -45,17 +45,7 @@ public class RatMapActivity extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-
         List<SightingDataItem> sightings = Model.getInstance().getItems();
-        if (sightings.size() == 0) {
-            Toast.makeText(this,"You must load data before showing map",Toast.LENGTH_LONG).show();
-            return;
-        }
 
         int startMonth = getIntent().getIntExtra("START_MONTH", 1);
         int startDay = getIntent().getIntExtra("START_DAY", 1);
@@ -80,7 +70,7 @@ public class RatMapActivity extends FragmentActivity implements OnMapReadyCallba
 
     private boolean isDateInRange(String date, int sm, int sd, int sy, int em, int ed, int ey) {
 
-        //excel date format example: 9/14/2015  12:00:00 AM
+        //given date format example: 9/14/2015  12:00:00 AM
         String onlyDate = date.substring(0, 10);     //cut off time part
         String[] dateInts = onlyDate.split("/");
         int month = Integer.parseInt(dateInts[0]);
