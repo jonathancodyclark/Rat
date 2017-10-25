@@ -63,44 +63,8 @@ public class HomeActivity extends AppCompatActivity {
     private void goToSightingsPage() {
         Log.e("HomeActivity", "we made it");
         model = Model.getInstance();
-        readCSV();
         startActivity(new Intent(this, SightingActivity.class));
     }
 
-    private void readCSV() {
-        int count = 0;
-        model.setSightings(); //make the sightings = null before loading in from manually added and CSV file
-        List<SightingDataItem> list = model.getSightingsAddedManuallyList();
-        for (SightingDataItem sda: list) {
-            model.addSighting(sda);
-            count++;
-        }
-        try {
-            InputStream is = getResources().openRawResource(R.raw.rat_sightings);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-            String line;
-            br.readLine(); //get rid of header line
-            while ((line = br.readLine()) != null) {
-                String[] tokens = line.split(",");
-                if (tokens.length < 51) {
-                    continue;
-                }
-                try {
-                    if (tokens[0] != null) {
-                        model.addSighting(new SightingDataItem(count, Integer.parseInt(tokens[0]), tokens[1], tokens[7], tokens[8], tokens[9],
-                        tokens[16], tokens[23], tokens[49], tokens[50]));
-                    }
 
-                } catch (Exception e) {
-                    Log.wtf("PostLoginActivity", "Error reading data on line" + line, e);
-                }
-                count++;
-            }
-
-            br.close();
-        } catch (Exception e) {
-            Log.e(TAG, "error reading CSV", e);
-        }
-
-    }
 }
