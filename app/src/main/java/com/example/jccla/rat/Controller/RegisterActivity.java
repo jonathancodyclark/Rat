@@ -80,11 +80,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void goToHomePage() {
         boolean inserted = db.insertData(etRegister_username.getText().toString(), etRegister_password.getText().toString(), "no");
-        if(inserted)
-            Toast.makeText(this,"Data Inserted, Registered",Toast.LENGTH_LONG).show();
-        else
-            Toast.makeText(this,"Data not Inserted",Toast.LENGTH_LONG).show();
-        //startActivity(new Intent(this, HomeActivity.class));
+        if(inserted) {
+            Toast.makeText(this, "Data Inserted, Registered", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, HomeActivity.class));
+        }
+        else {
+            Toast.makeText(this, "Data not Inserted", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void goToWelcomePage() {

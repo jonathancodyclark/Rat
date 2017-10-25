@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
            }
            startActivity(new Intent(this, HomeActivity.class));
        } else {
-            System.out.println(etLogin_password.getText().toString() + " not in here");
+           Toast.makeText(this,"Username or password is wrong try again",Toast.LENGTH_LONG).show();
        }
     }
 
