@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
 
+import java.io.InputStream;
 import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
@@ -39,6 +41,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goToHomePage() {
+        InputStream is = getResources().openRawResource(R.raw.rat_sightings);
+        Toast.makeText(this,"Loading Rat Data from CSV",Toast.LENGTH_LONG).show();
+        Model.getInstance().readCSV(is);
+
         startActivity(new Intent(this, HomeActivity.class));
     }
 
