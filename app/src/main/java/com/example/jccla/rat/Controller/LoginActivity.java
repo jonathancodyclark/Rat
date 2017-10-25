@@ -1,9 +1,11 @@
 package com.example.jccla.rat.Controller;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -41,9 +43,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goToHomePage() {
-        InputStream is = getResources().openRawResource(R.raw.rat_sightings);
-        Toast.makeText(this,"Loading Rat Data from CSV",Toast.LENGTH_LONG).show();
-        Model.getInstance().readCSV(is);
+        //hide keyboard
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
+        if (Model.getInstance().getItems().size() == 0) {
+            InputStream is = getResources().openRawResource(R.raw.rat_sightings);
+            Model.getInstance().readCSV(is);
+            Toast.makeText(this,"Loaded Rat Data from CSV",Toast.LENGTH_LONG).show();
+        }
+
 
         startActivity(new Intent(this, HomeActivity.class));
     }
