@@ -71,7 +71,7 @@ public class RatMapActivity extends FragmentActivity implements OnMapReadyCallba
                 double lng = Double.parseDouble(s.getLongitude());
                 LatLng location = new LatLng(lat, lng);
 
-                mMap.addMarker(new MarkerOptions().position(location).title("New Sighting"));
+                mMap.addMarker(new MarkerOptions().position(location).title("Reference Key " + s.getKey()));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
             }
 
