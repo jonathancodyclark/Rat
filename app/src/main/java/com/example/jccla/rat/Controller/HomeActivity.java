@@ -42,10 +42,22 @@ public class HomeActivity extends AppCompatActivity {
                 goToAddPage();
             }
         });
+
+        Button bViewMap = (Button) findViewById(R.id.bViewMap);
+        bViewMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToRatMap();
+            }
+        });
     }
 
     private void goToAddPage() {
         startActivity(new Intent(this, AddReportActivity.class));
+    }
+
+    private void goToRatMap() {
+        startActivity(new Intent(this, RatMapActivity.class));
     }
 
     private void goToSightingsPage() {

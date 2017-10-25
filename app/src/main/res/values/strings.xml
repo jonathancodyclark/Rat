@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Rat</string>
     <string name="title_activity_sightings">sightings</string>
+    <string name="title_activity_rat_map">RatMap</string>
 </resources>
