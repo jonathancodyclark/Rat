@@ -43,7 +43,8 @@
 
         <activity
             android:name=".Controller.RatMapActivity"
-            android:label="@string/title_activity_rat_map"></activity>
+            android:label="@string/title_activity_rat_map" />
+        <activity android:name=".Controller.MapDateRangeActivity"></activity>
     </application>
 
 </manifest>

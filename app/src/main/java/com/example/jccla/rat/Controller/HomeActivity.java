@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void goToRatMap() {
-        startActivity(new Intent(this, RatMapActivity.class));
+        startActivity(new Intent(this, MapDateRangeActivity.class));
     }
 
     private void goToSightingsPage() {

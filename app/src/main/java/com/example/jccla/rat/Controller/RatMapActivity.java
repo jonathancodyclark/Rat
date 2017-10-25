@@ -2,6 +2,7 @@ package com.example.jccla.rat.Controller;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.jccla.rat.R;
@@ -55,13 +56,49 @@ public class RatMapActivity extends FragmentActivity implements OnMapReadyCallba
             Toast.makeText(this,"You must load data before showing map",Toast.LENGTH_LONG).show();
             return;
         }
-        for (int i = 0; i < 100; i++) {
-            double lat = Double.parseDouble(sightings.get(i).getLatitude());
-            double lng = Double.parseDouble(sightings.get(i).getLongitude());
-            LatLng location = new LatLng(lat, lng);
 
-            mMap.addMarker(new MarkerOptions().position(location).title("New Sighting"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+        int startMonth = getIntent().getIntExtra("START_MONTH", 1);
+        int startDay = getIntent().getIntExtra("START_DAY", 1);
+        int startYear = getIntent().getIntExtra("START_YEAR", 1);
+        int endMonth = getIntent().getIntExtra("END_MONTH", 1);
+        int endDay = getIntent().getIntExtra("END_DAY", 1);
+        int endYear = getIntent().getIntExtra("END_YEAR", 1);
+
+        for (SightingDataItem s : sightings) {
+            if (isDateInRange(s.getDate(), startMonth, startDay, startYear,
+                                            endMonth, endDay, endYear)) {
+                double lat = Double.parseDouble(s.getLatitude());
+                double lng = Double.parseDouble(s.getLongitude());
+                LatLng location = new LatLng(lat, lng);
+
+                mMap.addMarker(new MarkerOptions().position(location).title("New Sighting"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+            }
+
+        }
+    }
+
+    private boolean isDateInRange(String date, int sm, int sd, int sy, int em, int ed, int ey) {
+
+        //excel date format example: 9/14/2015  12:00:00 AM
+        String onlyDate = date.substring(0, 10);     //cut off time part
+        String[] dateInts = onlyDate.split("/");
+        int month = Integer.parseInt(dateInts[0]);
+        int day = Integer.parseInt(dateInts[1]);
+        int year = Integer.parseInt(dateInts[2]);
+
+        if (year < sy || year > ey) {
+            return false;
+        } else if (year == sy && month < sm) {
+            return false;
+        } else if (year == sy && month == sm && day < sd) {
+            return false;
+        } else if (year == ey && month > em) {
+            return false;
+        } else if (year == ey && month == em && day > ed) {
+            return false;
+        } else {
+            return true;
         }
     }
 }
