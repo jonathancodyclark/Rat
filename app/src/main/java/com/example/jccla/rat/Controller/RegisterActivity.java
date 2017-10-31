@@ -78,6 +78,9 @@ public class RegisterActivity extends AppCompatActivity {
         builder.show();
     }
 
+
+
+
     private void goToHomePage() {
         boolean inserted = db.insertData(etRegister_username.getText().toString(), etRegister_password.getText().toString(), "no");
         if(inserted) {

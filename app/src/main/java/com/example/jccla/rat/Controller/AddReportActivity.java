@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.Model.SightingDataItem;
 import com.example.jccla.rat.R;
@@ -29,12 +31,14 @@ public class AddReportActivity extends AppCompatActivity {
     private EditText etLong;
     private Button bSubmit;
     private Button bCancel;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
         model = Model.getInstance();
+        db = new DatabaseHelper(this);
         etDateAndTime = (EditText) findViewById(R.id.etDate);
         etLocationType = (EditText) findViewById(R.id.etLocationType);
         etZipCode = (EditText) findViewById(R.id.etZip);
@@ -67,16 +71,26 @@ public class AddReportActivity extends AppCompatActivity {
     int  n = rand.nextInt(31464015) + 1; //31464015 is the first key (or ID) of the rat reports in the CSV
 
     private void submitAndGoToHomePage() {
-        model.putInLinkedList(
-                n,
-                etDateAndTime.getText().toString(),
-                etLocationType.getText().toString(),
-                etZipCode.getText().toString(),
-                etAddress.getText().toString(),
-                etCity.getText().toString(),
-                etBorough.getText().toString(),
-                etLat.getText().toString(),
-                etLong.getText().toString());
-        startActivity(new Intent(this, HomeActivity.class));
+        boolean inserted = db.insertRatData((n+ ""),  etDateAndTime.getText().toString(), etLocationType.getText().toString(), etZipCode.getText().toString(), etAddress.getText().toString(),
+                etCity.getText().toString(), etBorough.getText().toString(), etLat.getText().toString(),  etLong.getText().toString());
+        if(inserted) {
+            Toast.makeText(this, "Data Inserted, Registered", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, HomeActivity.class));
+        }
+        else {
+            Toast.makeText(this, "Data not Inserted", Toast.LENGTH_LONG).show();
+        }
+
+//        model.putInLinkedList(
+//                n,
+//                etDateAndTime.getText().toString(),
+//                etLocationType.getText().toString(),
+//                etZipCode.getText().toString(),
+//                etAddress.getText().toString(),
+//                etCity.getText().toString(),
+//                etBorough.getText().toString(),
+//                etLat.getText().toString(),
+//                etLong.getText().toString());
+//        startActivity(new Intent(this, HomeActivity.class));
     }
 }

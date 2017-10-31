@@ -14,12 +14,26 @@ import android.widget.Toast;
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper{
-    public static final String DATABASE_NAME = "login.db";
+    public static final String DATABASE_NAME = "Rat.db";
     public static final String TABLE_NAME = "login_table";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "USERNAME";
     public static final String COL_3 = "PASSWORD";
     public static final String COL_4 = "ADMIN";
+
+
+    public static final String TABLE_RAT_REPORTINGS = "report_table";
+    public static final String REPORT_ID = "ID";
+    public static final String CREATED_DATE = "Created_Date";
+    public static final String LOCATION_TYPE = "Location_Type";
+    public static final String ZIPCODE = "Zipcode";
+    public static final String ADDRESS = "Address";
+    public static final String CITY = "City";
+    public static final String BORROUGH = "Borrough";
+    public static final String LATITUDE = "Latitude";
+    public static final String LONGITUDE = "Longitude";
+
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -29,11 +43,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "USERNAME TEXT,PASSWORD TEXT,ADMIN TEXT)");
+        db.execSQL("create table " + TABLE_RAT_REPORTINGS + " (ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "CREATED_DATE TEXT,LOCATION_TYPE TEXT,ZIPCODE TEXT, ADDRESS TEXT, CITY TEXT, BORROUGH TEXT, LATITUDE TEXT, LONGITUDE TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_RAT_REPORTINGS);
         onCreate(db);
     }
 
@@ -51,10 +68,37 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             return true;
     }
 
+    //insert rat data
+    public boolean insertRatData(String ID, String createdDate, String locationType, String zipcode, String address, String city, String borrough, String latitude, String longitude) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(REPORT_ID,ID);
+        contentValues.put(CREATED_DATE,createdDate);
+        contentValues.put(LOCATION_TYPE,locationType);
+        contentValues.put(ZIPCODE, zipcode);
+        contentValues.put(ADDRESS, address);
+        contentValues.put(CITY, city);
+        contentValues.put(BORROUGH, borrough);
+        contentValues.put(LATITUDE, latitude);
+        contentValues.put(LONGITUDE, longitude);
+        long result = db.insert(TABLE_RAT_REPORTINGS,null ,contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
 
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from "+TABLE_NAME,null);
+        return cursor;
+    }
+
+    //returns all rat data
+    public Cursor getAllRatData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+TABLE_RAT_REPORTINGS,null);
         return cursor;
     }
 
