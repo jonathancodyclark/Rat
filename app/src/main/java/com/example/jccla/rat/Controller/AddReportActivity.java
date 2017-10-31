@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.Model.SightingDataItem;
 import com.example.jccla.rat.R;
@@ -18,6 +19,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class AddReportActivity extends AppCompatActivity {
+    //private RepDatabaseHelper db;
     private Model model;
     private EditText etDateAndTime;
     private EditText etLocationType;
@@ -34,6 +36,7 @@ public class AddReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
+        //db = new RepDatabaseHelper(this);
         model = Model.getInstance();
         etDateAndTime = (EditText) findViewById(R.id.etDate);
         etLocationType = (EditText) findViewById(R.id.etLocationType);

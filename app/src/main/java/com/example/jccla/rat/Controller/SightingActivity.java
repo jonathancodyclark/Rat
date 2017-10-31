@@ -19,7 +19,7 @@ import com.example.jccla.rat.R;
 import java.util.List;
 
 public class SightingActivity extends AppCompatActivity{
-
+    //This class will place sighting reports into a recycler?
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
