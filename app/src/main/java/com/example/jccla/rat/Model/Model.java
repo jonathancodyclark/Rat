@@ -105,7 +105,6 @@ public class Model {
         for (SightingDataItem s : sightings) {
             if (isDateInRange(s.getDate(), sm, sd, sy, em, ed, ey)) {
                 filteredList.add(s);
-                Log.d("FilteredList added ", "" + s.getKey());
             }
         }
         return filteredList;
