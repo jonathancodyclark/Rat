@@ -11,7 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.jccla.rat.Model.DatabaseHelper;
+import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
+
+import java.io.InputStream;
 
 public class RegisterActivity extends AppCompatActivity {
     DatabaseHelper db;
@@ -81,7 +84,12 @@ public class RegisterActivity extends AppCompatActivity {
     private void goToHomePage() {
         boolean inserted = db.insertData(etRegister_username.getText().toString(), etRegister_password.getText().toString(), "no");
         if(inserted) {
-            Toast.makeText(this, "Data Inserted, Registered", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Data Inserted, Registered", Toast.LENGTH_LONG).show();
+            if (Model.getInstance().getItems().size() == 0) {
+                InputStream is = getResources().openRawResource(R.raw.rat_sightings);
+                Model.getInstance().readCSV(is);
+                Toast.makeText(this,"Loaded Rat Data from CSV",Toast.LENGTH_LONG).show();
+            }
             startActivity(new Intent(this, HomeActivity.class));
         }
         else {

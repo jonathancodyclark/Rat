@@ -44,7 +44,9 @@
         <activity
             android:name=".Controller.RatMapActivity"
             android:label="@string/title_activity_rat_map" />
-        <activity android:name=".Controller.MapDateRangeActivity"></activity>
+        <activity android:name=".Controller.MapDateRangeActivity"/>
+        <activity android:name=".Controller.GraphActivity"/>
+        <activity android:name=".Controller.GraphDateRangeActivity"></activity>
     </application>
 
 </manifest>

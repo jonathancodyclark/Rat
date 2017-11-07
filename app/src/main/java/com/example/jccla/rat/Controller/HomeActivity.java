@@ -50,6 +50,13 @@ public class HomeActivity extends AppCompatActivity {
                 goToRatMap();
             }
         });
+        Button bGraph = (Button) findViewById(R.id.bGraph);
+        bGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToGraph();
+            }
+        });
     }
 
     private void goToAddPage() {
@@ -65,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
         model = Model.getInstance();
         startActivity(new Intent(this, SightingActivity.class));
     }
+    private void goToGraph() { startActivity(new Intent(this, GraphDateRangeActivity.class)); }
 
 
 }
