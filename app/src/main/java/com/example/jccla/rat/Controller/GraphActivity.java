@@ -10,6 +10,7 @@ import com.example.jccla.rat.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.Viewport;
 
 import java.util.Comparator;
 import java.util.Map;
@@ -70,9 +71,9 @@ public class GraphActivity extends AppCompatActivity {
 
         List<SightingDataItem> sightingsInRange = Model.getInstance().getSightingsInRange(startMonth, startDay, startYear,
                 endMonth, endDay, endYear);
-        System.out.println(sightingsInRange);
+        //System.out.println(sightingsInRange);
 
-        Map<Double, Integer> graphData = new HashMap<>();
+        //Map<Double, Integer> graphData = new HashMap<>();
 
 
 
@@ -90,14 +91,15 @@ public class GraphActivity extends AppCompatActivity {
                 }
             }
         });
+
         for (SightingDataItem s:sightingsInRange) {
             if (treeMap.containsKey(sameMonthYear(s))) {
-                treeMap.put(sameMonthYear(s), graphData.get(sameMonthYear(s)) + 1);
+                treeMap.put(sameMonthYear(s), treeMap.get(sameMonthYear(s)) + 1);
             } else {
                 treeMap.put(sameMonthYear(s), 1);
             }
         }
-        treeMap.putAll(graphData);
+        //treeMap.putAll(graphData);
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
         for (Map.Entry me : treeMap.entrySet()) {
@@ -107,6 +109,12 @@ public class GraphActivity extends AppCompatActivity {
 
         graph.getGridLabelRenderer().setVerticalAxisTitle("# of sightings");
         graph.getGridLabelRenderer().setHorizontalAxisTitle("Date");
+        /*
+            Viewport viewport = graph.getViewport();
+            TreeMap treeMap1 = (TreeMap) treeMap;
+            viewport.setMinX((double)treeMap1.firstKey());
+            viewport.setMaxX((double)treeMap1.lastKey());
+        */
         series.setDrawBackground(true);
         series.setAnimated(true);
         series.setDrawDataPoints(true);
