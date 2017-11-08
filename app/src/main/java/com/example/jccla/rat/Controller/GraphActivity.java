@@ -24,6 +24,8 @@ import static java.lang.Float.parseFloat;
 
 /**
  * Created by KaihanRoman on 11/3/17.
+ *
+ * Our graph will hold sightings per month on the y axis and dates on the x axis.
  */
 
 public class GraphActivity extends AppCompatActivity {
@@ -36,6 +38,13 @@ public class GraphActivity extends AppCompatActivity {
         initGraph(graph);
 
     }
+
+    /**
+     * Uses in String date from sightingDataItem, splits the string to give month day and year.
+     * Uses month and year to create a double that represents dates with the same month and year.
+     * @param s sighting data item from which we extract the date
+     * @return double used as a key in hashmap that hold month+year combos as keys
+     */
     private double sameMonthYear(SightingDataItem s) {
         String onlyDate =s.getDate().substring(0, 10);
         String[] strSplit = onlyDate.split("/");
@@ -43,6 +52,14 @@ public class GraphActivity extends AppCompatActivity {
         int year = Integer.parseInt(strSplit[2]);
         return (year + (month - 1) / 12);
     }
+
+    /**
+     * Edits, add labels and data points to the passed in graph. Puts data sightings in the
+     * specified range into a list, then puts all the sightings with the same month and year into
+     * a hashmap with the month/year as the key and the number of sighting in that month/year as
+     * the value.
+     * @param graph graph we are adding data to
+     */
     private void initGraph(GraphView graph) {
         int startMonth = getIntent().getIntExtra("START_MONTH", 1);
         int startDay = getIntent().getIntExtra("START_DAY", 1);
@@ -59,13 +76,7 @@ public class GraphActivity extends AppCompatActivity {
 
 
 
-        for (SightingDataItem s:sightingsInRange) {
-            if (graphData.containsKey(sameMonthYear(s))) {
-                graphData.put(sameMonthYear(s), graphData.get(sameMonthYear(s)) + 1);
-            } else {
-                graphData.put(sameMonthYear(s), 1);
-            }
-        }
+
         //tree map is gna sort the hashmap, prob didnt need to use hashmap at all
         Map<Double, Integer> treeMap = new TreeMap<>( new Comparator<Double>() {
             @Override
@@ -79,6 +90,13 @@ public class GraphActivity extends AppCompatActivity {
                 }
             }
         });
+        for (SightingDataItem s:sightingsInRange) {
+            if (treeMap.containsKey(sameMonthYear(s))) {
+                treeMap.put(sameMonthYear(s), graphData.get(sameMonthYear(s)) + 1);
+            } else {
+                treeMap.put(sameMonthYear(s), 1);
+            }
+        }
         treeMap.putAll(graphData);
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>();

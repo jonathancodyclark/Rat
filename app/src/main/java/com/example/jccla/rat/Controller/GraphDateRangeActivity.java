@@ -31,6 +31,9 @@ public class GraphDateRangeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Creates intent from view to be passed into Activity. gets start and end dates.
+     */
     private void goToGraph() {
         Intent intent = new Intent(this, GraphActivity.class);
 
