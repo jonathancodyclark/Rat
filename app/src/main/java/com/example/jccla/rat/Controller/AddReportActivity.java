@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class AddReportActivity extends AppCompatActivity {
+    //private RepDatabaseHelper db;
     private Model model;
     private EditText etDateAndTime;
     private EditText etLocationType;
@@ -37,6 +38,7 @@ public class AddReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
+        //db = new RepDatabaseHelper(this);
         model = Model.getInstance();
         db = new DatabaseHelper(this);
         etDateAndTime = (EditText) findViewById(R.id.etDate);

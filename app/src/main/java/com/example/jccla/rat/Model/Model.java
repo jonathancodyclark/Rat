@@ -100,4 +100,38 @@ public class Model {
 
     }
 
+    public List<SightingDataItem> getSightingsInRange(int sm, int sd, int sy, int em, int ed, int ey) {
+        List<SightingDataItem> filteredList = new ArrayList<SightingDataItem>();
+        for (SightingDataItem s : sightings) {
+            if (isDateInRange(s.getDate(), sm, sd, sy, em, ed, ey)) {
+                filteredList.add(s);
+            }
+        }
+        return filteredList;
+    }
+
+    private boolean isDateInRange(String date, int sm, int sd, int sy, int em, int ed, int ey) {
+
+        //given date format example: 9/14/2015  12:00:00 AM
+        String onlyDate = date.substring(0, 10);     //cut off time part
+        String[] dateInts = onlyDate.split("/");
+        int month = Integer.parseInt(dateInts[0]);
+        int day = Integer.parseInt(dateInts[1]);
+        int year = Integer.parseInt(dateInts[2]);
+
+        if (year < sy || year > ey) {
+            return false;
+        } else if (year == sy && month < sm) {
+            return false;
+        } else if (year == sy && month == sm && day < sd) {
+            return false;
+        } else if (year == ey && month > em) {
+            return false;
+        } else if (year == ey && month == em && day > ed) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
