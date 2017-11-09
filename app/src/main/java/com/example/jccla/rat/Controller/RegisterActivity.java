@@ -90,6 +90,11 @@ public class RegisterActivity extends AppCompatActivity {
                 Model.getInstance().readCSV(is);
                 Toast.makeText(this,"Loaded Rat Data from CSV",Toast.LENGTH_LONG).show();
             }
+            if (Model.getInstance().getItems().size() == 0) {
+                InputStream is = getResources().openRawResource(R.raw.rat_sightings);
+                Model.getInstance().readCSV(is);
+                Toast.makeText(this,"Loaded Rat Data from CSV",Toast.LENGTH_LONG).show();
+            }
             startActivity(new Intent(this, HomeActivity.class));
         }
         else {
