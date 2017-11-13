@@ -110,14 +110,14 @@ public class Model {
         return filteredList;
     }
 
-    private boolean isDateInRange(String date, int sm, int sd, int sy, int em, int ed, int ey) {
+    public boolean isDateInRange(String date, int sm, int sd, int sy, int em, int ed, int ey) {
 
         //given date format example: 9/14/2015  12:00:00 AM
         String onlyDate = date.substring(0, 10);     //cut off time part
         String[] dateInts = onlyDate.split("/");
         int month = Integer.parseInt(dateInts[0]);
         int day = Integer.parseInt(dateInts[1]);
-        int year = Integer.parseInt(dateInts[2]);
+        int year = Integer.parseInt(dateInts[2].split(" ")[0]);
 
         if (year < sy || year > ey) {
             return false;
