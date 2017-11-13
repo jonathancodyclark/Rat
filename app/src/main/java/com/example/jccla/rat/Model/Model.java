@@ -24,16 +24,36 @@ public class Model {
     private static int numAddedManuallyCount;
     private static List<SightingDataItem> sightingsAddedManuallyList;
 
+    /**
+     * Creates a new sighting from the params and adds it to the LinkedList
+     * @param key
+     * @param dt
+     * @param lt
+     * @param zip
+     * @param addr
+     * @param city
+     * @param borough
+     * @param lat
+     * @param lng
+     */
     public void putInLinkedList(int key, String dt, String lt, String zip, String addr, String city, String borough, String lat, String lng) {
         SightingDataItem aSighting = new SightingDataItem(numAddedManuallyCount, key, dt, lt, zip, addr, city, borough, lat, lng);
         sightingsAddedManuallyList.add(aSighting);
         numAddedManuallyCount++;
     }
 
+    /**
+     *
+     * @return the list of the sightings that were manually added by the user
+     */
     public List<SightingDataItem> getSightingsAddedManuallyList() {
         return sightingsAddedManuallyList;
     }
 
+    /**
+     *
+     * @return the number of manually added sightings
+     */
     public int getNumAddedManuallyCount(){
         return numAddedManuallyCount;
     }
@@ -44,26 +64,52 @@ public class Model {
         numAddedManuallyCount = 0;
     }
 
+    /**
+     *
+     * @return the singleton instance of the Model
+     */
     public static Model getInstance() {
         return _instance;
     }
 
+    /**
+     * Adds a sighting to the list in the Model.
+     * @param sighting
+     */
     public void addSighting(SightingDataItem sighting) {
         sightings.add(sighting);
     }
 
+    /**
+     * sets sightings to an empty LinkedList
+     */
     public void setSightings() {
         sightings = new LinkedList<>();
     }
 
+    /**
+     *
+     * @return the sightings list from the model
+     */
     public List<SightingDataItem> getItems() {
         return sightings;
     }
 
+    /**
+     *
+     * @param i the id of the sighting (index in the list)
+     * @return the sighting at that id
+     */
     public SightingDataItem getItemById(int i) {
         return sightings.get(i);
     }
 
+
+    /**
+     * reads sightings from the CSV into the list in the Model.
+     *
+     * @param is the InputStream from the LoginActivity
+     */
     public void readCSV(InputStream is) {
         int count = 0;
         setSightings(); //make the sightings = null before loading in from manually added and CSV file
@@ -100,6 +146,17 @@ public class Model {
 
     }
 
+    /**
+     * Method to filter the list of sightings to return the ones within the given date range
+     *
+     * @param sm the start month
+     * @param sd the start day
+     * @param sy the start year
+     * @param em the end month
+     * @param ed the end day
+     * @param ey the end year
+     * @return the filtered list of all sightings in the given date range.
+     */
     public List<SightingDataItem> getSightingsInRange(int sm, int sd, int sy, int em, int ed, int ey) {
         List<SightingDataItem> filteredList = new ArrayList<SightingDataItem>();
         for (SightingDataItem s : sightings) {
@@ -110,6 +167,18 @@ public class Model {
         return filteredList;
     }
 
+    /**
+     * Method to determine if a date is within a given range.
+     *
+     * @param date the date of the sighting
+     * @param sm the start month
+     * @param sd the start day
+     * @param sy the start year
+     * @param em the end month
+     * @param ed the end day
+     * @param ey the end year
+     * @return true if given date string is in range, false otherwise
+     */
     public boolean isDateInRange(String date, int sm, int sd, int sy, int em, int ed, int ey) {
 
         //given date format example: 9/14/2015  12:00:00 AM
