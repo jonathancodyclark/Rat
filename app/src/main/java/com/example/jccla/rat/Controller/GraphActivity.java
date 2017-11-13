@@ -2,7 +2,6 @@ package com.example.jccla.rat.Controller;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
 
 import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.Model.SightingDataItem;
@@ -10,14 +9,10 @@ import com.example.jccla.rat.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.Viewport;
 
 import java.util.Comparator;
 import java.util.Map;
-import java.util.Iterator;
-import java.util.Set;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 

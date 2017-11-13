@@ -2,8 +2,6 @@ package com.example.jccla.rat.Controller;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +15,6 @@ import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
 
 import java.io.InputStream;
-import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
     DatabaseHelper db;

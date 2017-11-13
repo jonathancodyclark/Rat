@@ -11,17 +11,7 @@ import android.widget.Button;
 
 import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.Model.Model;
-import com.example.jccla.rat.Model.SightingDataItem;
 import com.example.jccla.rat.R;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Serializable;
-import java.nio.charset.Charset;
-import java.util.List;
-
-import static com.example.jccla.rat.R.id.bSightingReports;
 
 public class HomeActivity extends AppCompatActivity {
     public static String TAG = "HomeActivity";

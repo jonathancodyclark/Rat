@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import com.example.jccla.rat.R;
 
-import java.util.Map;
-
 public class MapDateRangeActivity extends AppCompatActivity {
 
     @Override

@@ -1,6 +1,5 @@
 package com.example.jccla.rat.Model;
 
-import android.content.Context;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -10,8 +9,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import com.example.jccla.rat.Model.DatabaseHelper;
-import com.example.jccla.rat.R;
 
 /**
  * Created by jccla on 10/17/2017.

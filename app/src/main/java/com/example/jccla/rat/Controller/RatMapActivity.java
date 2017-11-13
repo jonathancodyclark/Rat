@@ -2,8 +2,6 @@ package com.example.jccla.rat.Controller;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.jccla.rat.R;
 import com.example.jccla.rat.Model.Model;

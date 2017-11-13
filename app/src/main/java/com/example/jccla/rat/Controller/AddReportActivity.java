@@ -2,11 +2,8 @@ package com.example.jccla.rat.Controller;
 
 import android.content.Intent;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +11,8 @@ import android.widget.Toast;
 
 import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.Model.Model;
-import com.example.jccla.rat.Model.SightingDataItem;
 import com.example.jccla.rat.R;
-import java.util.Date;
+
 import java.util.Random;
 
 public class AddReportActivity extends AppCompatActivity {
