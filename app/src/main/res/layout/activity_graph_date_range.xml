@@ -23,7 +23,7 @@
         android:datePickerMode="spinner"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
         android:layout_above="@+id/textView10"
         android:layout_centerHorizontal="true" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="End Date"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startDatePicker"
+        app:layout_constraintTop_toBottomOf="@+id/graphDatePicker"
         android:layout_marginBottom="17dp"
         android:layout_above="@+id/graphDatePicker2"
         android:layout_alignLeft="@+id/textView8"
@@ -47,7 +47,7 @@
         android:datePickerMode="spinner"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
         android:layout_above="@+id/bGraphDatesPicked"
         android:layout_alignLeft="@+id/graphDatePicker"
         android:layout_alignStart="@+id/graphDatePicker"
