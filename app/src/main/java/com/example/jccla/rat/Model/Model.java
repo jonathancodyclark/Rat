@@ -193,11 +193,7 @@ public class Model {
             return false;
         } else if (year == ey && month > em) {
             return false;
-        } else if (year == ey && month == em && day > ed) {
-            return false;
-        } else {
-            return true;
-        }
+        } else return !(year == ey && month == em && day > ed);
     }
 
 }

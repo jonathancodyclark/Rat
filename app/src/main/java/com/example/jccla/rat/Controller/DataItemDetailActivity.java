@@ -9,7 +9,6 @@ import com.example.jccla.rat.Model.SightingDataItem;
 import com.example.jccla.rat.R;
 
 public class DataItemDetailActivity extends AppCompatActivity {
-    private SightingDataItem mItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +16,7 @@ public class DataItemDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_item_detail);
 
         int index = getIntent().getIntExtra("index", 1); //1 is a default return value
-        mItem = Model.getInstance().getItemById(index);
+        SightingDataItem mItem = Model.getInstance().getItemById(index);
 
         ((TextView) findViewById(R.id.detail_key)).setText("" + mItem.getKey());
         ((TextView) findViewById(R.id.date)).setText(mItem.getDate());

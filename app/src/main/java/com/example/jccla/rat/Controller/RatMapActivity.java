@@ -17,8 +17,6 @@ import java.util.List;
 
 public class RatMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +39,7 @@ public class RatMapActivity extends FragmentActivity implements OnMapReadyCallba
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        GoogleMap mMap = googleMap;
 
         int startMonth = getIntent().getIntExtra("START_MONTH", 1);
         int startDay = getIntent().getIntExtra("START_DAY", 1);

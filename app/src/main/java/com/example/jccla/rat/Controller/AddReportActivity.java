@@ -16,8 +16,6 @@ import com.example.jccla.rat.R;
 import java.util.Random;
 
 public class AddReportActivity extends AppCompatActivity {
-    //private RepDatabaseHelper db;
-    private Model model;
     private EditText etDateAndTime;
     private EditText etLocationType;
     private EditText etZipCode;
@@ -26,8 +24,6 @@ public class AddReportActivity extends AppCompatActivity {
     private EditText etBorough;
     private EditText etLat;
     private EditText etLong;
-    private Button bSubmit;
-    private Button bCancel;
     DatabaseHelper db;
 
     @Override
@@ -35,7 +31,7 @@ public class AddReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
         //db = new RepDatabaseHelper(this);
-        model = Model.getInstance();
+        Model model = Model.getInstance();
         db = new DatabaseHelper(this);
         etDateAndTime = (EditText) findViewById(R.id.etDate);
         etLocationType = (EditText) findViewById(R.id.etLocationType);
@@ -45,8 +41,8 @@ public class AddReportActivity extends AppCompatActivity {
         etBorough = (EditText) findViewById(R.id.etBorough);
         etLat= (EditText) findViewById(R.id.etLat);
         etLong = (EditText) findViewById(R.id.etLong);
-        bSubmit = (Button) findViewById(R.id.bAdd_Submit);
-        bCancel = (Button) findViewById(R.id.bAdd_Cancel);
+        Button bSubmit = (Button) findViewById(R.id.bAdd_Submit);
+        Button bCancel = (Button) findViewById(R.id.bAdd_Cancel);
         bSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

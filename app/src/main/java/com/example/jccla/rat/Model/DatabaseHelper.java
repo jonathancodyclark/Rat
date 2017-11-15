@@ -60,10 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contentValues.put(COL_3,password);
         contentValues.put(COL_4,admin);
         long result = db.insert(TABLE_NAME,null ,contentValues);
-        if(result == -1)
-            return false;
-        else
-            return true;
+        return result != -1;
     }
 
     //insert rat data
@@ -80,10 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contentValues.put(LATITUDE, latitude);
         contentValues.put(LONGITUDE, longitude);
         long result = db.insert(TABLE_RAT_REPORTINGS,null ,contentValues);
-        if(result == -1)
-            return false;
-        else
-            return true;
+        return result != -1;
     }
 
 
@@ -138,10 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         cursor.close();
         db.close();
-        if (cursorCount > 0) {
-            return true;
-        }
+        return cursorCount > 0;
 
-        return false;
     }
 }
