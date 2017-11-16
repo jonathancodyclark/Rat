@@ -17,12 +17,10 @@ import com.example.jccla.rat.R;
 import java.io.InputStream;
 
 public class RegisterActivity extends AppCompatActivity {
-    DatabaseHelper db;
-    EditText etRegister_username;
-    EditText etRegister_password;
-    Button bRegister;
-    Button bCancel;
-    Button bViewUsers;
+    private DatabaseHelper db;
+    private EditText etRegister_username;
+    private EditText etRegister_password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +28,9 @@ public class RegisterActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         etRegister_username = (EditText) findViewById(R.id.etRegister_username);
         etRegister_password = (EditText) findViewById(R.id.etRegister_password);
-        bRegister = (Button) findViewById(R.id.bRegister_register);
-        bCancel = (Button) findViewById(R.id.bRegister_cancel);
-        bViewUsers = (Button) findViewById(R.id.bRegister_viewUsers);
+        Button bRegister = (Button) findViewById(R.id.bRegister_register);
+        Button bCancel = (Button) findViewById(R.id.bRegister_cancel);
+        Button bViewUsers = (Button) findViewById(R.id.bRegister_viewUsers);
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,17 +61,17 @@ public class RegisterActivity extends AppCompatActivity {
 
         StringBuffer buffer = new StringBuffer();
         while (cursor.moveToNext()) {
-            buffer.append("Id :"+ cursor.getString(0)+"\n");
-            buffer.append("Username :"+ cursor.getString(1)+"\n");
-            buffer.append("Password :"+ cursor.getString(2)+"\n");
-            buffer.append("Admin :"+ cursor.getString(3)+"\n\n");
+            buffer.append("Id :").append(cursor.getString(0)).append("\n");
+            buffer.append("Username :").append(cursor.getString(1)).append("\n");
+            buffer.append("Password :").append(cursor.getString(2)).append("\n");
+            buffer.append("Admin :").append(cursor.getString(3)).append("\n\n");
         }
 
         // Show all data
         showMessage("Data",buffer.toString());
     }
 
-    public void showMessage(String title,String Message){
+    private void showMessage(String title, String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle(title);

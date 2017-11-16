@@ -6,18 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
 
 public class WelcomeActivity extends AppCompatActivity {
-    Model model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         Button loginButton = (Button) findViewById(R.id.login_button);
         Button registerButton = (Button) findViewById(R.id.register_button);
-        model = new Model();
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

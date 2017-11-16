@@ -17,7 +17,7 @@ import com.example.jccla.rat.R;
 import java.io.InputStream;
 
 public class LoginActivity extends AppCompatActivity {
-    DatabaseHelper db;
+    private DatabaseHelper db;
     private EditText etLogin_username;
     private EditText etLogin_password;
     @Override

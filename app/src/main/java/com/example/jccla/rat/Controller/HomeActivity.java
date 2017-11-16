@@ -10,13 +10,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.jccla.rat.Model.DatabaseHelper;
-import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
 
 public class HomeActivity extends AppCompatActivity {
-    public static String TAG = "HomeActivity";
-    DatabaseHelper db;
-    Model model;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +68,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void goToSightingsPage() {
         Log.e("HomeActivity", "we made it");
-        model = Model.getInstance();
         startActivity(new Intent(this, SightingActivity.class));
     }
     private void goToGraph() { startActivity(new Intent(this, GraphDateRangeActivity.class)); }
 
-    public void showMessage(String title,String Message){
+    private void showMessage(String title, String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle(title);
@@ -94,15 +90,15 @@ public class HomeActivity extends AppCompatActivity {
 
         StringBuffer buffer = new StringBuffer();
         while (cursor.moveToNext()) {
-            buffer.append("Id :"+ cursor.getString(0)+"\n");
-            buffer.append("Created Date :"+ cursor.getString(1)+"\n");
-            buffer.append("Location Type :"+ cursor.getString(2)+"\n");
-            buffer.append("Zipcode :"+ cursor.getString(3)+"\n");
-            buffer.append("Address :"+ cursor.getString(4)+"\n");
-            buffer.append("City :"+ cursor.getString(5)+"\n");
-            buffer.append("Borrough :"+ cursor.getString(6)+"\n");
-            buffer.append("Latitude :"+ cursor.getString(7)+"\n");
-            buffer.append("Longitude :"+ cursor.getString(8)+"\n\n");
+            buffer.append("Id :").append(cursor.getString(0)).append("\n");
+            buffer.append("Created Date :").append(cursor.getString(1)).append("\n");
+            buffer.append("Location Type :").append(cursor.getString(2)).append("\n");
+            buffer.append("Zip code :").append(cursor.getString(3)).append("\n");
+            buffer.append("Address :").append(cursor.getString(4)).append("\n");
+            buffer.append("City :").append(cursor.getString(5)).append("\n");
+            buffer.append("Borough :").append(cursor.getString(6)).append("\n");
+            buffer.append("Latitude :").append(cursor.getString(7)).append("\n");
+            buffer.append("Longitude :").append(cursor.getString(8)).append("\n\n");
         }
 
         // Show all data

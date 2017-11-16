@@ -14,6 +14,7 @@ import java.util.List;
  * Created by jccla on 10/17/2017.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class Model {
     /** Singleton instance */
     private static final Model _instance = new Model();
@@ -23,15 +24,15 @@ public class Model {
 
     /**
      * Creates a new sighting from the params and adds it to the LinkedList
-     * @param key
-     * @param dt
-     * @param lt
-     * @param zip
-     * @param addr
-     * @param city
-     * @param borough
-     * @param lat
-     * @param lng
+     * @param key unique key of the sighting
+     * @param dt the date of the sighting
+     * @param lt the location type of the sighting
+     * @param zip the zip code of the sighting
+     * @param addr the address of the sighting
+     * @param city the city of the sighting
+     * @param borough the borough of the sighting
+     * @param lat the latitude of the sighting
+     * @param lng the longitude
      */
     public void putInLinkedList(int key, String dt, String lt, String zip, String addr, String city, String borough, String lat, String lng) {
         SightingDataItem aSighting = new SightingDataItem(numAddedManuallyCount, key, dt, lt, zip, addr, city, borough, lat, lng);
@@ -43,7 +44,7 @@ public class Model {
      *
      * @return the list of the sightings that were manually added by the user
      */
-    public List<SightingDataItem> getSightingsAddedManuallyList() {
+    private List<SightingDataItem> getSightingsAddedManuallyList() {
         return sightingsAddedManuallyList;
     }
 
@@ -55,9 +56,9 @@ public class Model {
         return numAddedManuallyCount;
     }
 
-    public Model() {
+    private Model() {
         sightings = new LinkedList<>();
-        sightingsAddedManuallyList = new LinkedList<SightingDataItem>();
+        sightingsAddedManuallyList = new LinkedList<>();
         numAddedManuallyCount = 0;
     }
 
@@ -71,16 +72,16 @@ public class Model {
 
     /**
      * Adds a sighting to the list in the Model.
-     * @param sighting
+     * @param sighting the sighting to add to the list
      */
-    public void addSighting(SightingDataItem sighting) {
+    private void addSighting(SightingDataItem sighting) {
         sightings.add(sighting);
     }
 
     /**
      * sets sightings to an empty LinkedList
      */
-    public void setSightings() {
+    private void setSightings() {
         sightings = new LinkedList<>();
     }
 
@@ -155,7 +156,7 @@ public class Model {
      * @return the filtered list of all sightings in the given date range.
      */
     public List<SightingDataItem> getSightingsInRange(int sm, int sd, int sy, int em, int ed, int ey) {
-        List<SightingDataItem> filteredList = new ArrayList<SightingDataItem>();
+        List<SightingDataItem> filteredList = new ArrayList<>();
         for (SightingDataItem s : sightings) {
             if (isDateInRange(s.getDate(), sm, sd, sy, em, ed, ey)) {
                 filteredList.add(s);

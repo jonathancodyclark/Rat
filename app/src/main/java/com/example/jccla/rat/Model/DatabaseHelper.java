@@ -11,25 +11,26 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by jccla on 10/23/2017.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class DatabaseHelper extends SQLiteOpenHelper{
-    public static final String DATABASE_NAME = "Rat.db";
-    public static final String TABLE_NAME = "login_table";
-    public static final String COL_1 = "ID";
-    public static final String COL_2 = "USERNAME";
-    public static final String COL_3 = "PASSWORD";
-    public static final String COL_4 = "ADMIN";
+    private static final String DATABASE_NAME = "Rat.db";
+    private static final String TABLE_NAME = "login_table";
+    private static final String COL_1 = "ID";
+    private static final String COL_2 = "USERNAME";
+    private static final String COL_3 = "PASSWORD";
+    private static final String COL_4 = "ADMIN";
 
 
-    public static final String TABLE_RAT_REPORTINGS = "report_table";
-    public static final String REPORT_ID = "ID";
-    public static final String CREATED_DATE = "Created_Date";
-    public static final String LOCATION_TYPE = "Location_Type";
-    public static final String ZIPCODE = "Zipcode";
-    public static final String ADDRESS = "Address";
-    public static final String CITY = "City";
-    public static final String BORROUGH = "Borrough";
-    public static final String LATITUDE = "Latitude";
-    public static final String LONGITUDE = "Longitude";
+    private static final String TABLE_RAT_REPORTINGS = "report_table";
+    private static final String REPORT_ID = "ID";
+    private static final String CREATED_DATE = "Created_Date";
+    private static final String LOCATION_TYPE = "Location_Type";
+    private static final String ZIPCODE = "Zipcode";
+    private static final String ADDRESS = "Address";
+    private static final String CITY = "City";
+    private static final String BORROUGH = "Borrough";
+    private static final String LATITUDE = "Latitude";
+    private static final String LONGITUDE = "Longitude";
 
 
 
@@ -83,22 +84,20 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from "+TABLE_NAME,null);
-        return cursor;
+        return db.rawQuery("select * from "+TABLE_NAME,null);
     }
 
     //returns all rat data
     public Cursor getAllRatData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from "+TABLE_RAT_REPORTINGS,null);
-        return cursor;
+        return db.rawQuery("select * from "+TABLE_RAT_REPORTINGS,null);
     }
 
     /**
      * This method to check user exist or not
      *
-     * @param email
-     * @param password
+     * @param email the email the user used to sign in
+     * @param password the user's password
      * @return true/false
      */
     public boolean checkUser(String email, String password) {
@@ -115,10 +114,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         String[] selectionArgs = {email, password};
 
         // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
+        /*
+          Here query function is used to fetch records from user table this function works like we use sql query.
+          SQL query equivalent to this query function is
+          SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
          */
         Cursor cursor = db.query(TABLE_NAME, //Table to query
                 columns,                    //columns to return

@@ -15,6 +15,7 @@ import com.example.jccla.rat.R;
  */
 
 
+@SuppressWarnings("DefaultFileTemplate")
 public class GraphDateRangeActivity extends AppCompatActivity {
 
     @Override

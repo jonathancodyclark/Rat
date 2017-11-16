@@ -75,8 +75,8 @@ public class SightingActivity extends AppCompatActivity{
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.key);
-                mContentView = (TextView) view.findViewById(R.id.address);
+                mIdView = view.findViewById(R.id.key);
+                mContentView = view.findViewById(R.id.address);
             }
 
             @Override

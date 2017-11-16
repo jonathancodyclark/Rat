@@ -8,8 +8,9 @@ import com.example.jccla.rat.Model.Model;
  * Created by mikereilly on 11/13/17.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class IsDateInRangeTest {
-	Model model = Model.getInstance();
+	private final Model model = Model.getInstance();
 
 	@Test
     public void testYearTooEarly() {
@@ -30,7 +31,7 @@ public class IsDateInRangeTest {
     }
 
     @Test
-    public void testdayTooEarly() {
+    public void testDayTooEarly() {
    		String date = "9/20/2015 12:00:00 AM";
     	Assert.assertEquals("Test day too early", false, model.isDateInRange(date, 9, 25, 2015, 10, 25, 2015));
     }

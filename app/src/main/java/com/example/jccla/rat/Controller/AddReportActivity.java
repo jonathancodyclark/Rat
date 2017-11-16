@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.jccla.rat.Model.DatabaseHelper;
-import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
 
 import java.util.Random;
@@ -24,14 +23,13 @@ public class AddReportActivity extends AppCompatActivity {
     private EditText etBorough;
     private EditText etLat;
     private EditText etLong;
-    DatabaseHelper db;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_report);
         //db = new RepDatabaseHelper(this);
-        Model model = Model.getInstance();
         db = new DatabaseHelper(this);
         etDateAndTime = (EditText) findViewById(R.id.etDate);
         etLocationType = (EditText) findViewById(R.id.etLocationType);
@@ -61,8 +59,8 @@ public class AddReportActivity extends AppCompatActivity {
         startActivity(new Intent(this, HomeActivity.class));
     }
 
-    Random rand = new Random();
-    int  n = rand.nextInt(31464015) + 1; //31464015 is the first key (or ID) of the rat reports in the CSV
+    private final Random rand = new Random();
+    private final int  n = rand.nextInt(31464015) + 1; //31464015 is the first key (or ID) of the rat reports in the CSV
 
     private void submitAndGoToHomePage() {
         boolean inserted = db.insertRatData((n+ ""),  etDateAndTime.getText().toString(), etLocationType.getText().toString(), etZipCode.getText().toString(), etAddress.getText().toString(),
