@@ -1,6 +1,7 @@
 package com.example.jccla.rat.Model;
 
 import android.util.Log;
+import android.widget.EditText;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -195,6 +196,34 @@ public class Model {
         } else if (year == ey && month > em) {
             return false;
         } else return !(year == ey && month == em && day > ed);
+    }
+
+    public boolean checkPasswordCharacteristics(String pwd) {
+        int passwordLength = pwd.length();
+        if (passwordLength > 15 || passwordLength < 4) { //password must be between 2 and 15 letters
+            return false;
+        }
+        boolean foundSpecialCharacter = false;
+        boolean foundANumber = false;
+        boolean foundUpperCaseLetter = false;
+        for (int i = 0; i < passwordLength; i++) {
+            char thisChar = pwd.charAt(i);
+            if (thisChar == '@' || thisChar == '#' || thisChar == '$' || thisChar == '%' ||
+                    thisChar == '^' || thisChar == '&' || thisChar == '*' || thisChar == '!' || thisChar == '_'
+                    || thisChar == '+' || thisChar == '~' || thisChar == '(' || thisChar == ')') {
+                foundSpecialCharacter = true; //checks if password contains any of these special characters
+            }
+            if (Character.getNumericValue(thisChar) >= 0 && Character.getNumericValue(thisChar) <= 9) {
+                foundANumber = true; //checks if password contains a character that is a number 0-9
+            }
+            if (thisChar >= 'A' && thisChar <= 'Z' && thisChar == Character.toUpperCase(thisChar)) {
+                foundUpperCaseLetter = true; // checks if character is in capital letter range first, then if it is uppercase
+            }
+        }
+        if (!foundSpecialCharacter || !foundANumber || !foundUpperCaseLetter) {
+            return false;
+        }
+        return true;
     }
 
 }
