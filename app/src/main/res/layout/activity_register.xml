@@ -6,84 +6,91 @@
     android:layout_height="match_parent"
     tools:context="com.example.jccla.rat.Controller.RegisterActivity">
 
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="184dp"
-        android:layout_height="30dp"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:text="Register for Rat Report"
-        android:layout_marginLeft="8dp"
+    <RelativeLayout
+        android:layout_width="389dp"
+        android:layout_height="522dp"
+        android:layout_marginLeft="-48dp"
+        android:layout_marginTop="-6dp"
+        android:background="@drawable/bb"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="109dp" />
+        app:layout_constraintTop_toTopOf="parent">
+    >
 
-    <EditText
-        android:id="@+id/etRegister_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:hint="username"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvRegister" />
+        <EditText
+            android:id="@+id/etRegister_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="New Username"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintHorizontal_bias="0.503"
+            android:layout_marginTop="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:id="@+id/etRegister_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:hint="password"
-        android:inputType="textPassword"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/etRegister_username" />
+        <EditText
+            android:id="@+id/etRegister_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:hint="New Password"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:inputType="textPassword"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintTop_toBottomOf="@+id/etLogin_username"
+            android:layout_below="@+id/etRegister_username"
+            android:layout_alignLeft="@+id/etRegister_username"
+            android:layout_alignStart="@+id/etRegister_username" />
 
-    <Button
-        android:id="@+id/bRegister_register"
-        android:layout_width="98dp"
-        android:layout_height="70dp"
-        android:text="Register"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/etRegister_password" />
+        <com.dd.CircularProgressButton
+            android:id="@+id/bRegister_register"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_textIdle="SUBMIT"
+            android:layout_marginTop="23dp"
+            android:layout_below="@+id/etRegister_password"
+            android:layout_alignLeft="@+id/bRegister_cancel"
+            android:layout_alignStart="@+id/bRegister_cancel" />
 
-    <Button
-        android:id="@+id/bRegister_cancel"
-        android:layout_width="99dp"
-        android:layout_height="69dp"
-        android:text="Cancel"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/bRegister_register" />
+        <com.dd.CircularProgressButton
+            android:id="@+id/bRegister_cancel"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_textIdle="CANCEL"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/bRegister_register"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp" />
 
-    <Button
-        android:id="@+id/bRegister_viewUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Registered Users"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <com.dd.CircularProgressButton
+            android:id="@+id/bRegister_viewUsers"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_textIdle="VIEW REGISTERED USERS" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

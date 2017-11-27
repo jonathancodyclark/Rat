@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.dd.CircularProgressButton;
 import com.example.jccla.rat.R;
 
 public class MapDateRangeActivity extends AppCompatActivity {
@@ -16,8 +17,7 @@ public class MapDateRangeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_date_range);
-
-        Button bDatesPicked = (Button) findViewById(R.id.bDatesPicked);
+        CircularProgressButton bDatesPicked = (CircularProgressButton) findViewById(R.id.bDatesPicked);
         bDatesPicked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

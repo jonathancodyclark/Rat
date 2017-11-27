@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dd.CircularProgressButton;
 import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.R;
 
@@ -39,8 +40,8 @@ public class AddReportActivity extends AppCompatActivity {
         etBorough = (EditText) findViewById(R.id.etBorough);
         etLat= (EditText) findViewById(R.id.etLat);
         etLong = (EditText) findViewById(R.id.etLong);
-        Button bSubmit = (Button) findViewById(R.id.bAdd_Submit);
-        Button bCancel = (Button) findViewById(R.id.bAdd_Cancel);
+        CircularProgressButton bSubmit = (CircularProgressButton) findViewById(R.id.bAdd_Submit);
+        CircularProgressButton bCancel = (CircularProgressButton) findViewById(R.id.bAdd_Cancel);
         bSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

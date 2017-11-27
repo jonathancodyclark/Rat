@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dd.CircularProgressButton;
 import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
@@ -28,9 +29,9 @@ public class RegisterActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         etRegister_username = (EditText) findViewById(R.id.etRegister_username);
         etRegister_password = (EditText) findViewById(R.id.etRegister_password);
-        Button bRegister = (Button) findViewById(R.id.bRegister_register);
-        Button bCancel = (Button) findViewById(R.id.bRegister_cancel);
-        Button bViewUsers = (Button) findViewById(R.id.bRegister_viewUsers);
+        CircularProgressButton bRegister = (CircularProgressButton) findViewById(R.id.bRegister_register);
+        CircularProgressButton bCancel = (CircularProgressButton) findViewById(R.id.bRegister_cancel);
+        CircularProgressButton bViewUsers = (CircularProgressButton) findViewById(R.id.bRegister_viewUsers);
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

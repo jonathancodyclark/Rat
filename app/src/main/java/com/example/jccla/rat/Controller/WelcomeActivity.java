@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.dd.CircularProgressButton;
+import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -13,8 +15,8 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        Button loginButton = (Button) findViewById(R.id.login_button);
-        Button registerButton = (Button) findViewById(R.id.register_button);
+        CircularProgressButton loginButton = (CircularProgressButton) findViewById(R.id.login_button);
+        CircularProgressButton registerButton = (CircularProgressButton) findViewById(R.id.register_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

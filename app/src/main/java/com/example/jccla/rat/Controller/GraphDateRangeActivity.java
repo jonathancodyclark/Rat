@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.dd.CircularProgressButton;
 import com.example.jccla.rat.R;
 
 /**
@@ -23,7 +24,7 @@ public class GraphDateRangeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph_date_range);
 
-        Button bGraphDatesPicked = (Button) findViewById(R.id.bGraphDatesPicked);
+        CircularProgressButton bGraphDatesPicked = (CircularProgressButton) findViewById(R.id.bGraphDatesPicked);
         bGraphDatesPicked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

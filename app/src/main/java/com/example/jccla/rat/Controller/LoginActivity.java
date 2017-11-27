@@ -2,6 +2,7 @@ package com.example.jccla.rat.Controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dd.CircularProgressButton;
 import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.Model.Model;
 import com.example.jccla.rat.R;
@@ -27,14 +29,43 @@ public class LoginActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         etLogin_username = (EditText) findViewById(R.id.etLogin_username);
         etLogin_password = (EditText) findViewById(R.id.etLogin_password);
-        Button bLogin = (Button) findViewById(R.id.bLogin_login);
-        Button bCancel = (Button) findViewById(R.id.bLogin_cancel);
+        final CircularProgressButton bLogin = (CircularProgressButton) findViewById(R.id.bLogin_login);
+        CircularProgressButton bCancel = (CircularProgressButton) findViewById(R.id.bLogin_cancel);
+        bLogin.setIndeterminateProgressMode(true);
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToHomePage();
+                if (bLogin.getProgress() == 0) {
+                    bLogin.setProgress(30);
+                } else if (bLogin.getProgress() == -1) {
+                    bLogin.setProgress(0);
+                } else if (bLogin.getProgress() == 100) {
+                    startActivity(new Intent(LoginActivity.this, ButtonActivity.class));
+                }
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (db.checkUser(etLogin_username.getText().toString(), etLogin_password.getText().toString())) {
+                            bLogin.setProgress(100);
+                            View view = LoginActivity.this.getCurrentFocus();
+                            if (view != null) {
+                                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            }
+
+                            if (Model.getInstance().getItems().size() == 0) {
+                                InputStream is = getResources().openRawResource(R.raw.rat_sightings);
+                                Model.getInstance().readCSV(is);
+                            }
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        } else {
+                            bLogin.setProgress(-1);
+                        }
+                    }
+                }, 3000);
             }
-        });
+        }
+        );
         bCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void goToHomePage() {
+    /*private void goToHomePage() {
        if (db.checkUser(etLogin_username.getText().toString(), etLogin_password.getText().toString())) {
            View view = this.getCurrentFocus();
            if (view != null) {
@@ -60,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
        } else {
            Toast.makeText(this,"Username or password is wrong try again",Toast.LENGTH_LONG).show();
        }
-    }
+    }*/
 
     private void goToWelcomePage() {
         startActivity(new Intent(this, WelcomeActivity.class));
