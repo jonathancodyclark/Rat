@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.dd.CircularProgressButton;
 import com.example.jccla.rat.Model.DatabaseHelper;
 import com.example.jccla.rat.R;
 
@@ -20,14 +21,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         db = new DatabaseHelper(this);
-        Button bSightingReports = (Button) findViewById(R.id.bSightingReports);
+        CircularProgressButton bSightingReports = (CircularProgressButton) findViewById(R.id.bSightingReports);
         bSightingReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToSightingsPage();
             }
         });
-        Button bAddSighting = (Button) findViewById(R.id.bAddReport);
+        CircularProgressButton bAddSighting = (CircularProgressButton) findViewById(R.id.bAddReport);
         bAddSighting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,21 +36,21 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        Button bViewMap = (Button) findViewById(R.id.bViewMap);
+        CircularProgressButton bViewMap = (CircularProgressButton) findViewById(R.id.bViewMap);
         bViewMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToRatMap();
             }
         });
-        Button viewAddedReports = (Button) findViewById(R.id.view_added_reports);
+        CircularProgressButton viewAddedReports = (CircularProgressButton) findViewById(R.id.view_added_reports);
         viewAddedReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewRatReports();
             }
         });
-        Button bGraph = (Button) findViewById(R.id.bGraph);
+        CircularProgressButton bGraph = (CircularProgressButton) findViewById(R.id.bGraph);
         bGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
