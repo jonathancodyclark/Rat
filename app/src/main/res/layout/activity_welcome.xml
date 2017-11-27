@@ -20,9 +20,6 @@
             android:id="@+id/login_button"
             android:layout_width="259dp"
             android:layout_height="40dp"
-            android:layout_above="@+id/tvRegister"
-            android:layout_alignLeft="@+id/register_button"
-            android:layout_alignStart="@+id/register_button"
             android:layout_gravity="center"
             android:layout_marginBottom="12dp"
             android:elevation="0dp"
@@ -30,7 +27,10 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:cpb_cornerRadius="48dp"
-            app:cpb_textIdle="Login" />
+            app:cpb_textIdle="Login"
+            android:layout_above="@+id/tvRegister"
+            android:layout_alignLeft="@+id/register_button"
+            android:layout_alignStart="@+id/register_button" />
 
         <TextView
             android:id="@+id/Title"
@@ -50,37 +50,39 @@
             android:id="@+id/tvRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/register_button"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:gravity="center"
             android:text="Don't Have An Account?"
             android:textColor="#FFFFFF"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_above="@+id/register_button"
+            android:layout_alignRight="@+id/Title"
+            android:layout_alignEnd="@+id/Title" />
 
         <com.dd.CircularProgressButton
             android:id="@+id/register_button"
             android:layout_width="259dp"
             android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="99dp"
             android:text="Click to Register"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
             app:cpb_cornerRadius="48dp"
-            app:cpb_textIdle="Register" />
+            app:cpb_textIdle="Register"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/Title"
+            android:layout_alignEnd="@+id/Title"
+            android:layout_marginRight="52dp"
+            android:layout_marginEnd="52dp" />
 
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/ratmoving"
-            android:layout_alignBottom="@+id/register_button"
+            android:layout_above="@+id/register_button"
             android:layout_alignRight="@+id/Title"
-            android:layout_alignEnd="@+id/Title"
-            android:layout_marginBottom="11dp" />
+            android:layout_alignEnd="@+id/Title" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

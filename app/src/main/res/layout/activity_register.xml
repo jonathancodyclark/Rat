@@ -49,7 +49,7 @@
 
         <com.dd.CircularProgressButton
             android:id="@+id/bRegister_register"
-            android:layout_width="300dp"
+            android:layout_width="340dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
@@ -57,14 +57,18 @@
             android:textStyle="bold"
             app:cpb_cornerRadius="48dp"
             app:cpb_textIdle="SUBMIT"
-            android:layout_marginTop="23dp"
+            app:cpb_textError="password does not meet requirements"
+            app:cpb_textComplete="Registration Successful"
+            android:layout_marginTop="17dp"
             android:layout_below="@+id/etRegister_password"
-            android:layout_alignLeft="@+id/bRegister_cancel"
-            android:layout_alignStart="@+id/bRegister_cancel" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp" />
 
         <com.dd.CircularProgressButton
             android:id="@+id/bRegister_cancel"
-            android:layout_width="300dp"
+            android:layout_width="340dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:textColor="#FFFFFF"
@@ -72,12 +76,10 @@
             android:textStyle="bold"
             app:cpb_cornerRadius="48dp"
             app:cpb_textIdle="CANCEL"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="26dp"
             android:layout_below="@+id/bRegister_register"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="34dp"
-            android:layout_marginStart="34dp" />
+            android:layout_alignLeft="@+id/bRegister_register"
+            android:layout_alignStart="@+id/bRegister_register" />
 
         <com.dd.CircularProgressButton
             android:id="@+id/bRegister_viewUsers"

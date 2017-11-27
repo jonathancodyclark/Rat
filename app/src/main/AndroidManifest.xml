@@ -47,7 +47,8 @@
         <activity android:name=".Controller.MapDateRangeActivity" />
         <activity android:name=".Controller.GraphActivity" />
         <activity android:name=".Controller.GraphDateRangeActivity" />
-        <activity android:name=".Controller.ButtonActivity"></activity>
+        <activity android:name=".Controller.ButtonActivity" />
+        <activity android:name=".Controller.ButtonRegisterActivity"></activity>
     </application>
 
 </manifest>

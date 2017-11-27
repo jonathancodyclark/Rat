@@ -2,6 +2,7 @@ package com.example.jccla.rat.Controller;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,15 +30,41 @@ public class RegisterActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         etRegister_username = (EditText) findViewById(R.id.etRegister_username);
         etRegister_password = (EditText) findViewById(R.id.etRegister_password);
-        CircularProgressButton bRegister = (CircularProgressButton) findViewById(R.id.bRegister_register);
+        final CircularProgressButton bRegister = (CircularProgressButton) findViewById(R.id.bRegister_register);
         CircularProgressButton bCancel = (CircularProgressButton) findViewById(R.id.bRegister_cancel);
         CircularProgressButton bViewUsers = (CircularProgressButton) findViewById(R.id.bRegister_viewUsers);
+        bRegister.setIndeterminateProgressMode(true);
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToHomePage();
+                if (bRegister.getProgress() == 0) {
+                    bRegister.setProgress(30);
+                } else if (bRegister.getProgress() == -1) {
+                    bRegister.setProgress(0);
+                } else if (bRegister.getProgress() == 100) {
+                    startActivity(new Intent(RegisterActivity.this, ButtonRegisterActivity.class));
+                }
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (Model.getInstance().checkPasswordCharacteristics(etRegister_password.getText().toString())) {
+                            bRegister.setProgress(100);
+                            boolean inserted = db.insertData(etRegister_username.getText().toString(), etRegister_password.getText().toString(), "no");
+                            if (inserted) {
+                                if (Model.getInstance().getItems().size() == 0) {
+                                    InputStream is = getResources().openRawResource(R.raw.rat_sightings);
+                                    Model.getInstance().readCSV(is);
+                                }
+                                startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                            }
+                        } else {
+                            bRegister.setProgress(-1);
+                        }
+                    }
+                }, 3000);
             }
-        });
+        }
+        );
         bCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-    private void goToHomePage() {
+    /*private void goToHomePage() {
         if (Model.getInstance().checkPasswordCharacteristics(etRegister_password.getText().toString())){
             boolean inserted = db.insertData(etRegister_username.getText().toString(), etRegister_password.getText().toString(), "no");
             if(inserted) {
@@ -100,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "password doesn't meet requirements", Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
     private void goToWelcomePage() {
         startActivity(new Intent(this, WelcomeActivity.class));

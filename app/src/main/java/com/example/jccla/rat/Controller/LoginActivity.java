@@ -74,25 +74,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    /*private void goToHomePage() {
-       if (db.checkUser(etLogin_username.getText().toString(), etLogin_password.getText().toString())) {
-           View view = this.getCurrentFocus();
-           if (view != null) {
-               InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-               imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-           }
-
-           if (Model.getInstance().getItems().size() == 0) {
-               InputStream is = getResources().openRawResource(R.raw.rat_sightings);
-               Model.getInstance().readCSV(is);
-               Toast.makeText(this,"Loaded Rat Data from CSV",Toast.LENGTH_LONG).show();
-           }
-           startActivity(new Intent(this, HomeActivity.class));
-       } else {
-           Toast.makeText(this,"Username or password is wrong try again",Toast.LENGTH_LONG).show();
-       }
-    }*/
-
     private void goToWelcomePage() {
         startActivity(new Intent(this, WelcomeActivity.class));
     }
